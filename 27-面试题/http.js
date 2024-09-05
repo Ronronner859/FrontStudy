@@ -2,7 +2,6 @@ setTimeout(function () {
     console.log('setTimeout 1');
     new Promise(function (resolve) {
         console.log('promise 1');
-        1
         resolve();
     }).then(function () {
         console.log('promise then')

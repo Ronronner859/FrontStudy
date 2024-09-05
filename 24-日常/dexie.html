@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <script>
+        //
+        // Declare Database
+        //
+        const db = new Dexie('FriendDatabase');
+        // db 版本 存储结构 以对象的形式 id都是自增
+        db.version(1).stores({
+            friends: '++id, name,age'
+        });
+
+        // db.version(2).stores({
+        //     friends: "++id,name,age,*tags",
+        //     gameSessions: "id,score"
+        // });
+
+        // db.version(3).stores({
+        //     friends: "++id, [firstName+lastName], yearOfBirth, *tags", // Change indexes
+        //     gameSessions: null // Delete table
+
+        // }).upgrade(tx => {
+        //     // Will only be executed if a version below 2 was installed.
+        //     return tx.table("friends").modify(friend => {
+        //         friend.firstName = friend.name.split(' ')[0];
+        //         friend.lastName = friend.name.split(' ')[1];
+        //         friend.birthDate = new Date(new Date().getFullYear() - friend.age, 0);
+        //         delete friend.name;
+        //         delete friend.age;
+        //     });
+        // });
+        //
+        // Play with it 
+        //
+        // add 存数据 有回调 可以捕获错误
+        db.friends.add({
+            name: 'Alice',
+            age: 33
+        }, )
+    </script>
+</head>
+
+</html>
