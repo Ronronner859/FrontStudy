@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 类是构造器模式的语法糖
+        // 类中的constructor相当于构造器中的this
+        // 类中的方法相当于构造器中的原型方法
+        class Person {
+            // 构造器
+            constructor(name, age, gender) {
+                this.name = name;
+                this.age = age;
+                this.gender = gender;
+            }
+            say() {
+                console.log(`我叫${this.name},我今年${this.age}岁,我是一个${this.gender}人`);
+            }
+        }
+        // Person.prototype.say = function () {
+        //     console.log(`我叫${this.name},我今年${this.age}岁,我是一个${this.gender}人`);
+        // }
+
+        // 创建对象
+        const person1 = new Person('张三', 20, '男');
+        const person2 = new Person('李四', 21, '女');
+        const person3 = new Person('王五', 22, '男');
+
+        console.log(person1, person2, person3);
+        person1.say();
+        person2.say();
+        person3.say();
+    </script>
+</body>
+
+</html>

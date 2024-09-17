@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 构造器模式 创建对象 使用new关键字 
+        function Person(name, age, gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            // 方法
+            this.say = function () {
+                console.log(`我叫${this.name},我今年${this.age}岁,我是一个${this.gender}人`);
+            }
+        }
+
+
+        // 创建对象
+        const person1 = new Person('张三', 20, '男');
+        const person2 = new Person('李四', 21, '女');
+        const person3 = new Person('王五', 22, '男');
+
+        console.log(person1, person2, person3);
+        person1.say();
+        person2.say();
+        person3.say();
+    </script>
+</body>
+
+</html>
