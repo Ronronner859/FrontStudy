@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="proxy.js"></script>
+    <div id="container"></div>
+
+    <script>
+        const obj = {
+            name: '张三',
+            age: 18
+        }
+        const container = document.getElementById('container');
+        container.textContent = obj.name;
+
+
+        // 代理模式 保护目标对象 增强目标对象 在目标对象基础上做一些额外的操作
+        const p = new Proxy(obj, {
+            get(target, prop) {
+                return target[prop];
+            },
+            set(target, prop, value) {
+                target[prop] = value;
+                container.textContent = value;
+            }
+        })
+        console.log(p);
+        // p.name = '李四';
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 抽象工厂模式 -->
+    <script>
+        // 抽象工厂模式
+
+        /**
+         * 解耦性
+         */
+        class User {
+            constructor(name, role, page) {
+                this.name = name;
+                this.role = role;
+                this.page = page;
+            }
+            welcome() {
+                console.log(`welcome ${this.name} to ${this.role} to ${this.page}`);
+            }
+            dataShow() {
+                console.log(`dataShow ${this.name} to ${this.role} to ${this.page}`);
+            }
+        }
+        class SuperAdmin extends User {
+            constructor(name) {
+                super(name, "superAdmin", ['home', 'login', 'register']);
+            }
+            addUser() {
+                console.log('addUser');
+            }
+            removeUser() {
+                console.log('removeUser');
+            }
+            updateUser() {
+                console.log('updateUser');
+            }
+        }
+        class Student extends User {
+            constructor(name) {
+                super(name, "student", ['home', 'student', 'score']);
+            }
+        }
+        class Teacher extends User {
+            constructor(name) {
+                super(name, "teacher", ['home', 'teacher', 'score']);
+            }
+        }
+
+        function getAbstractFactory(role) {
+            switch (role) {
+                case 'superAdmin':
+                    return SuperAdmin;
+                case 'student':
+                    return Student;
+                case 'teacher':
+                    return Teacher;
+                default:
+                    throw new Error('Invalid role');
+            }
+        }
+        const superAdmin = new getAbstractFactory('superAdmin')
+        let user1 = new superAdmin('张三');
+        console.log(user1);
+        const admin = new getAbstractFactory('student')
+        let user2 = new admin('李四');
+        console.log(user2);
+        user1.welcome();
+        user1.dataShow();
+    </script>
+</body>
+
+</html>

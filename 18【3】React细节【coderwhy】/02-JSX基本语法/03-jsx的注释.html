@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>hello react</title>
@@ -7,34 +8,18 @@
     <script src="../lib/react-dom.js"></script>
     <script src="../lib/bable.js"></script>
 </head>
+
 <body>
     <div id="root"></div>
-    <script type="text/babel" >
-        /*
-        1.只有一个根元素
-        2.为了方便阅读，我们通常在isx的外层包裹一个小括号(0)，这样可以方便阅读，并且isx可以进行换行书写
-         */
+    <script type="text/babel">
+        /* 1.只有一个根元素 2.为了方便阅读，我们通常在isx的外层包裹一个小括号(0)，这样可以方便阅读，并且isx可以进行换行书写 */ class App extends React.Component { constructor() { super() this.state = { nums:100 }; } render() { return ((
+        <div>
 
-        class App extends React.Component {
-            constructor() {
-                super()
-                this.state = {
-                    nums:100
-                };
-
-            }
-            render() {
-                return ((
-                    <div>
-
-                        {/* jsx 文件中可以自动生成*/}
-                    </div>
-                ))
-            }
-        }
-
-        const root = ReactDOM.createRoot(document.querySelector("#root"))
-        root.render(<App/>)
+            {/* jsx 文件中可以自动生成*/}
+        </div>
+        )) } } const root = ReactDOM.createRoot(document.querySelector("#root")) root.render(
+        <App/>)
     </script>
 </body>
+
 </html>

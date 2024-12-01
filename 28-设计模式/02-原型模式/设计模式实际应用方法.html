@@ -75,27 +75,37 @@
         </div>
     </div>
     <script>
+        // 页面中有多个tab栏，每个tab栏的点击事件不同，如何处理？
+        // this指向
         // 创建tab栏 1
-        const container = document.querySelector('.container');
-        const header = document.querySelector('.header');
-        const tabs = header.querySelectorAll('li');
-        const content = document.querySelector('.content');
-        const contentsDivs = content.querySelectorAll('div');
-
-        // 获取事件
-        tabs.forEach((tab, index) => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(tab => {
-                    tab.classList.remove('active');
-                });
-                contentsDivs.forEach(div => {
-                    div.classList.remove('active');
-                });
-                tab.classList.add('active');
-                contentsDivs[index].classList.add('active');
-            });
-        });
+        function Tab(container, type) {
+            this.container = document.querySelector(container);
+            this.header = this.container.querySelector('.header');
+            this.content = this.container.querySelector('.content');
+            this.tabs = this.header.querySelectorAll('li');
+            this.contents = this.content.querySelectorAll('div');
+            this.type = type;
+            this.changeTab()
+        }
+        Tab.prototype.changeTab = function () {
+            this.tabs.forEach((tab, index) => {
+                tab.addEventListener(this.type, () => {
+                    this.tabs.forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+                    this.contents.forEach(div => {
+                        div.classList.remove('active');
+                    });
+                    tab.classList.add('active');
+                    this.contents[index].classList.add('active');
+                }, false)
+            })
+        }
+        new Tab('.container', 'click');
+        new Tab('.container2', 'mouseover');
     </script>
 </body>
+
+</html>
 
 </html>

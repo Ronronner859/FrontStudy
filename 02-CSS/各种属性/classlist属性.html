@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- classList属性 -->
+    <div class="box">
+        <p>123</p>
+    </div>
+    <script>
+        const box = document.querySelector('.box');
+        console.log(box.classList);
+        // 添加类
+        box.classList.add('red');
+        box.classList.remove('red');
+        // 切换类
+        box.classList.toggle('red');
+        // 判断是否包含某个类
+        console.log(box.classList.contains('red'));
+        // 获取类名
+        console.log(box.classList.item(0));
+        // 获取类名索引
+        console.log(Array.from(box.classList));
+        console.log(Array.from(box.classList).indexOf('red'));
+
+        // 添加多个类
+        box.classList.add('red', 'blue', 'green');
+        // 删除多个类
+        box.classList.remove('red', 'blue', 'green');
+    </script>
+</body>
+
+</html>

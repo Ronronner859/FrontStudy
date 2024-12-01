@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.7.2/axios.min.js"></script>
+    <script>
+        const instance = axios.create({
+            baseURL: 'http://localhost:5000/api',
+            timeout: 1000,
+        })
+        instance.interceptors.request.use(
+            config => {
+                console.log(config);
+                console.log('请求拦截器');
+                return config;
+            }
+        )
+        instance.interceptors.response.use(
+            response => {
+                console.log(response);
+                console.log('响应拦截器');
+                return response;
+            }
+        )
+        instance.post('/user/users', {
+            name: '张三',
+            age: 18
+        }).then(res => {
+            console.log(res);
+        })
+
+        console.log(instance);
+    </script>
+</body>
+
+</html>

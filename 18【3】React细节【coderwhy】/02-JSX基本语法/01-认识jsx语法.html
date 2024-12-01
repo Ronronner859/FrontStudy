@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>hello react</title>
@@ -7,30 +8,16 @@
     <script src="../lib/react-dom.js"></script>
     <script src="../lib/bable.js"></script>
 </head>
+
 <body>
     <div id="root"></div>
-    <script type="text/babel" >
-
-
-        class App extends React.Component {
-            constructor() {
-                super()
-                this.state = {
-                    nums:100
-                };
-
-            }
-            render() {
-                return ((
-                    <div>
-
-                    </div>
-                ))
-            }
-        }
-
-        const root = ReactDOM.createRoot(document.querySelector("#root"))
-        root.render(<App/>)
+    <script type="text/babel">
+        // JSX 语法 const element =
+        <h1>Hello, world!</h1>; function App() {
+            return (
+                <div>
+                    ReactDOM.render(element, document.getElementById('root'));
     </script>
 </body>
+
 </html>

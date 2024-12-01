@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 工厂模式
+     工厂模式是一种创建对象的设计模式，它提供了一种创建对象的方式，而不需要暴露内部结构。
+     工厂模式的主要优点是：
+     1. 可以隐藏对象的创建细节，使代码更加简洁。
+     2. 可以方便地修改对象的创建方式，而不需要修改客户端代码。
+     3. 可以方便地创建多个对象，而不需要重复编写代码。
+    -->
+    <script>
+        // 权限管理
+        function User(role, page) {
+            this.role = role;
+            this.page = page;
+        }
+
+        function Factory(role, page) {
+            switch (role) {
+                case 'superAdmin':
+                    return new User('superAdmin', ['home', 'login', 'register']);
+                    break;
+                case 'student':
+                    return new User('student', ['home', 'student', 'score']);
+                    break;
+                case 'teacher':
+                    return new User('teacher', ['home', 'teacher', 'score']);
+                    break;
+                default:
+                    return new User('guest', ['home']);
+            }
+        }
+        const user1 = Factory('superAdmin', ['home', 'login', 'register']);
+        const user2 = Factory('student', ['home', 'student', 'score']);
+        const user3 = Factory('teacher', ['home', 'teacher', 'score']);
+        const user4 = Factory('guest', ['home']);
+        console.log(user1, user2, user3, user4);
+    </script>
+</body>
+
+</html>

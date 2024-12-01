@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.7/underscore-umd-min.min.js"></script> -->
+
+
+    <input type="text" id="input2">
+
+    <script>
+    </script>
+
+    <script>
+        // 节流
+        function throttle(fn, interval, {
+            leading = true,
+            trailing = false
+        } = {}) {
+            let startTime = 0;
+            let timer = null;
+            const _throttle = function (...args) {
+                let nowTime = new Date().getTime();
+                if (!leading && startTime === 0) {
+                    startTime = nowTime;
+                }
+                const waitTime = interval - (nowTime - startTime);
+                if (waitTime <= 0) {
+                    fn.apply(this, args);
+                    startTime = nowTime;
+                }
+
+                // 判断是否需要执行尾部
+                if (trailing && !timer) {
+                    timer = setTimeout(() => {
+                        fn.apply(this, args);
+                        startTime = new Date().getTime();
+                        timer = null;
+                    }, waitTime);
+                }
+            }
+            return _throttle;
+        }
+        // let input1 = document.getElementById('input1');
+        // input1.addEventListener('input', _.throttle(function (e) {
+        //     console.log(e.target.value);
+        // }, 1000));
+        let input2 = document.getElementById('input2');
+        input2.addEventListener('input', throttle(function (e) {
+            console.log(e.target.value);
+        }, 3000), {
+            passive: true
+        });
+    </script>
+</body>
+
+</html>
